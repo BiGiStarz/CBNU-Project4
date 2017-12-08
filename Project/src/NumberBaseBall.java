@@ -23,12 +23,12 @@ import javax.swing.border.*;
 public class NumberBaseBall {
     // Main클래스 생성
     public static void main(String[] args) {
-    	new Baseball();
+       new Baseball();
       }
 
 }
 
-class Baseball extends JFrame implements KeyListener  {
+class Baseball extends JFrame{
    
     // 시도한 횟수 전역변수 설정 (생성자 클래스와 액션리스너 클래스에서 둘 다 필요)
     Label LabNum = new Label("0");
@@ -236,7 +236,7 @@ class Baseball extends JFrame implements KeyListener  {
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       
       panelView.requestFocus();
-      panelView.addKeyListener((KeyListener)this);
+
       // --------------------------------------------------------------------------- //
       
       //기본 레벨 설정
@@ -466,12 +466,12 @@ class Baseball extends JFrame implements KeyListener  {
          }
         //컴퓨터와 사용자 패 확인 메서드
          public void Versus() {
-        	 //userNum에 중복된 숫자가 있으시 출력하지 않는다
-        	if(overlap(userNum.toString())) {
-        		
-        	}
-        	else {
-        	int strike=0;
+            //userNum에 중복된 숫자가 있으시 출력하지 않는다
+           if(overlap(userNum.toString())) {
+              
+           }
+           else {
+           int strike=0;
             int ball=0;
             
             for(int i=0;i<LEVEL;i++) {
@@ -490,7 +490,7 @@ class Baseball extends JFrame implements KeyListener  {
             
             textArea.append(textAreaRow +". " + strike +"Strike! " + (ball-strike) +"ball.--"+fieldView.getText()+"\n");
             areaView.setText(textArea.toString());
-        	
+           
             
          if(strike==LEVEL) {
                switch(LEVEL) {
@@ -523,105 +523,5 @@ class Baseball extends JFrame implements KeyListener  {
        
          
 }
-         //Key로 입력받기
-		@Override
-		public void keyPressed(KeyEvent e) {
-			// TODO Auto-generated method stub
-			if(e.getKeyChar()=='0') {
-				if(userNum.length()<LEVEL) {
-					userNum.append("0");
-					fieldView.setText(userNum.toString());
-					}
-			}
-			if(e.getKeyChar()=='1') {
-				if(userNum.length()<LEVEL) {
-					userNum.append("1");
-					fieldView.setText(userNum.toString());
-					}
-			}
-			if(e.getKeyChar()=='2') {
-				if(userNum.length()<LEVEL) {
-					userNum.append("2");
-					fieldView.setText(userNum.toString());
-					}
-			}
-			if(e.getKeyChar()=='3') {
-				if(userNum.length()<LEVEL) {
-					userNum.append("3");
-					fieldView.setText(userNum.toString());
-					}
-			}
-			if(e.getKeyChar()=='4') {
-				if(userNum.length()<LEVEL) {
-					userNum.append("4");
-					fieldView.setText(userNum.toString());
-					}
-			}
-			if(e.getKeyChar()=='5') {
-				if(userNum.length()<LEVEL) {
-					userNum.append("5");
-					fieldView.setText(userNum.toString());
-					}
-			}
-			if(e.getKeyChar()=='6') {
-				if(userNum.length()<LEVEL) {
-					userNum.append("6");
-					fieldView.setText(userNum.toString());
-					}
-			}
-			if(e.getKeyChar()=='7') {
-				if(userNum.length()<LEVEL) { 
-					userNum.append("7");
-					fieldView.setText(userNum.toString());
-					}
-			}
-			if(e.getKeyChar()=='8') {
-				if(userNum.length()<LEVEL) {
-				userNum.append("8");
-				fieldView.setText(userNum.toString());
-				}
-			}
-			if(e.getKeyChar()=='9') {
-				if(userNum.length()<LEVEL) {
-					userNum.append("9");
-					fieldView.setText(userNum.toString());
-					}
-			}
-			
-			if(e.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
-				fieldView.setText(userNum.reverse().delete(0, 1).reverse().toString());
-			}
-			if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-				if(fieldView.getText().isEmpty()) {
-					 JOptionPane.showMessageDialog(panelProgress, "The number is not exists", "Warning", 
-		                     JOptionPane.WARNING_MESSAGE);
-				}
-				else if(userNum.length()!=LEVEL) {
-					 JOptionPane.showMessageDialog(panelProgress, "Entered is not a"+LEVEL+"digit number", "Warning", 
-		                     JOptionPane.WARNING_MESSAGE);
-				}
-				else if(overlap(fieldView.getText())) {
-					 JOptionPane.showMessageDialog(panelProgress, "The same number eexists", "Warning", 
-		                     JOptionPane.WARNING_MESSAGE);
-				}
-				else {
-					Versus();
-					userNum.delete(0, userNum.length());
-					fieldView.setText(userNum.toString());
-				}
-				
-			}
-		}
 
-		@Override
-		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
 }
